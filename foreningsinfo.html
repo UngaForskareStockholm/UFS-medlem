@@ -1,0 +1,229 @@
+<!doctype html>
+
+<html lang="sv-se">
+    <head>
+        <meta charset="utf-8">
+        <title>UFS Medlemsrapportering</title>
+
+		<!-- Bootstrap -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- FormValidation CSS file -->
+		<link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
+		
+		<!-- Font Awesome CSS file -->
+		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+
+		<!-- UFS specific CSS file -->
+		<link rel="stylesheet" href="vendor/felicia/ufs.css">
+	</head>
+
+    <body>
+        <div class="ufsheader container-fluid  col-xs-offset-1">
+			<a href="#">
+                <img class="ufsheaderimage" alt="Unga Forskare Stockholm" src="ufslogga.png">
+            </a>
+			<ul class="nav navbar-nav navbar-right">
+              <li><a href="#">UFS.se</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">UFS &amp; PUL</a></li>
+            </ul>
+		</div>
+        <nav class="navbar navbar-default">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Välkommen! <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></li>
+                <li><a href="medlemslista.html">Medlemslista <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></li>
+                <li class="active"><a href="foreningsinfo.html">Föreningsinfo <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
+                <li><a href="arsrapport.html">Årsrapport <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+                <li><a href="fortroendevalda.html">Förtroendevalda <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+                <li><a href="laddaupp.html">Ladda upp <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+                <li><a href="granska.html">Granska / Skicka in <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+                <li><a href="klart.html">Klart!</a></li>
+              </ul>
+
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+        </nav>
+        <div class="container">
+            <h1>Föreningsinfo</h1>
+            <form id="profileForm" class="form-horizontal">                                       
+                <h3 class="col-xs-offset-2">Kontaktuppgifter</h3>
+                <p class="col-xs-offset-2">Uppdaterade kontaktuppgifter till föreningen gör att ni inte missar någon viktig information eller några inbjudningar, se till att allt stämmer.</p>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Föreningens namn</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text" name="foreningsnamn" placeholder="[FÖRENINGSNAMN]" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Kontaktuppgifter</label>
+                    <div class="col-xs-3">
+                        <input type="email" class="form-control" name="foreningsmail" placeholder="Föreningens mailadress" />
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="foreningstel" placeholder="Föreningens telefonnummer" />
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Adress</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" name="foreningsgatuadress" placeholder="Gatuadress" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-1 control-label sr-only">Eventuell C/o</label>    
+                    <div class="col-xs-6 col-xs-offset-1">
+                        <input type="text" class="form-control" name="foreningsevco" placeholder="Eventuell C/o" />
+                    </div>    
+                </div>   
+                <div class="form-group">
+                    <label class="col-xs-1 control-label sr-only">Postnummer och ort</label>
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <input type="text" class="form-control" name="foreningspostnr" placeholder="Postnummer" />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="email" class="form-control" id="foreningspostort" placeholder="Ort" />
+                    </div>
+                </div>             
+                <h3 class="col-xs-offset-2">Lokal</h3> 
+                <p class="col-xs-offset-2">Har ni ingen lokal kan ni hoppa över de här fälten.</p>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Adress</label>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" name="lokaladress" placeholder="Gatuadress" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-1 control-label sr-only">Kontakt</label>
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <input type="text" class="form-control" name="lokalpostnr" placeholder="Postnummer" />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="email" class="form-control" id="lokalort" placeholder="Ort" />
+                    </div>
+                </div>
+                <h3 class="col-xs-offset-2">Kontaktperson</h3>
+                <p class="col-xs-offset-2">Personen kommer att få UFS nyhetsbrev och all information som skickas till föreningen.</p>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Namn</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="firstName" placeholder="Förnamn" />
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="lastName" placeholder="Efternamn" />
+                    </div>
+					</div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Kontakt</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="cellPhone" placeholder="Telefon" />
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Mailadress" />
+                    </div>                    
+                </div>
+                <h3 class="col-xs-offset-2">Mer info</h3> 
+                    <p class="col-xs-offset-2">Landstinget vill att vi samlar in sätesort på alla våra föreningar.</p> 
+                    <p class="col-xs-offset-2">För att vi ska kunna betala ut stöd och projektbidrag till er förening så behöver vi ett kontonummer. Kontot skall vara ägt av föreningen.</p>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">Sätesort</label>
+                    <div class="col-xs-6">
+                        <select class="form-control" name="sldkjhs" placeholder="Välj">
+                          <option selected disabled>Välj kommun</option>
+                          <option>Botkyrka</option>
+                          <option>Danderyd</option>
+                          <option>Ekerö</option>
+                          <option>Haninge</option>
+                          <option>Huddinge</option>
+                          <option>Järfälla</option>
+                          <option>Lidingö</option>
+                          <option>Nacka</option>
+                          <option>Norrtälje</option>
+                          <option>Nykvarn</option>
+                          <option>Nynäshamn</option>
+                          <option>Salem</option>
+                          <option>Sigtuna</option>
+                          <option>Sollentuna</option>
+                          <option>Solna</option>
+                          <option>Stockholm</option>
+                          <option>Sundbyberg</option>
+                          <option>Södertälje</option>
+                          <option>Tyresö</option>
+                          <option>Täby</option>
+                          <option>Upplands-Bro</option>
+                          <option>Upplands Väsby</option>
+                          <option>Vallentuna</option>
+                          <option>Vaxholm</option>
+                          <option>Värmdö</option>
+                          <option>Österåker</option>                          
+                        </select> 
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <label class="col-xs-2 control-label">Kontonummer</label>
+                    <div class="col-xs-2">
+                        <select class="form-control" name="kontoväljare" id="konto" placeholder="Välj">
+                          <option selected disabled>Välj kontotyp</option>
+                          <option value="plusgiro">PlusGiro</option>
+                          <option value="bankgiro">BankGiro</option>
+                          <option value="bankkonto">Bankkonto</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" name="bankclear" id="bankclear" placeholder="Clearingnummer" />
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" name="kontonummer" placeholder="Kontonummer" />
+                    </div>
+                </div>
+				<div class="form-group">
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+                        <button type="submit" class="btn btn-warning">Spara informationen</button>
+                    </div>
+                </div>
+            </form>              
+        </div>
+        <footer class="footer">
+	    	<div class="container">
+    	      <div class="row">
+        	      <div class="col-md-3 col-md-offset-9">
+            	    <a href="arsrapport.html" class="btn btn-primary btn-lg btn-block" role="button">Nästa steg</a>
+                	<a href="arsrapport.html" class="btn btn-primary btn-lg btn-block disabled" role="button"><s>Nästa steg</s></a>
+                    <p class="text-muted"></p>
+	              </div>
+    	      </div>  
+			</div>
+  		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- Bootstrap-->
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		
+		<!-- jQuery v1.9.1 or higher -->
+		<script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+
+		<!-- FormValidation plugin and the class supports validating Bootstrap form -->
+		<script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
+		<script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+		
+        <!-- UFS specific JS file (for bank account form) -->
+		<script src="vendor/felicia/arsrapport.js"></script>
+    </body>
+</html>
