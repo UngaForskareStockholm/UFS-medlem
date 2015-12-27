@@ -23,11 +23,11 @@
 			<a href="#">
                 <img class="ufsheaderimage" alt="Unga Forskare Stockholm" src="ufslogga.png">
             </a>
-			              <ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
               <li><a href="#">UFS.se</a></li>
               <li><a href="#">Facebook</a></li>
               <li><a href="#">UFS &amp; PUL</a></li>
-              </ul>
+            </ul>
 		</div>
         <nav class="navbar navbar-default">
           <div class="container">
@@ -45,11 +45,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a href="index.html">Välkommen! <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></li>
-                <li class="active"><a href="medlemslista.html">Medlemslista <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"><span class="sr-only">(current)</span></a></li>
+                <li><a href="medlemslista.html">Medlemslista <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></li>
 				<li><a href="foreningsinfo.html">Föreningsinfo <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
                 <li><a href="arsrapport.html">Årsrapport <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
                 <li><a href="fortroendevalda.html">Förtroendevalda <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="laddaupp.html">Ladda upp <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+                <li class="active"><a href="laddaupp.html">Ladda upp <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
                 <li><a href="granska.html">Granska / Skicka in <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
                 <li><a href="klart.html">Klart!</a></li>
               </ul>
@@ -58,58 +58,66 @@
           </div><!-- /.container -->
         </nav>
         <div class="container">
-			<h1>Medlemslista</h1>
-			<p>Välkommen till steg ett av medlemsrapporteringen! Här laddar ni upp er medlemslista och får feedback på ifall något behöver ändras innan ni kan gå vidare till nästa steg.</p>
+            <h1>Ladda upp</h1>
+            <p>Nu är det dags att ladda upp alla filer som vi vill ha in från er i år.</p>
+            <p>Här är alla filer som vi vill ha av er:</p>
+            <ul>
+                <li>Årsmötesprotokoll</li>
+                <li>Stadagar om de ändrats under året</li>
+                <li>Ekonomisk berättelse om ni valde att inte skriva det under årsrapport</li>
+            </ul>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">De uppgifter vi behöver samla in om alla medlemmar är:</h3>
+					<h3 class="panel-title">Ladda upp en fil</h3>
 				</div>
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-6">
-							<ul>
-								<li>Förnamn</li>
-								<li>Efternamn</li>
-								<li>Födelsedatum/personnummer (YYYY-MM-DD/YYYY-MM-DD-XXXX)</li>
-								<li>Kön (M/K)</li>
-								<li>C/O</li>
-								<li>Gatuadress</li>
-							</ul>
-							</div>
-						<div class="col-md-6">
-							<ul>
-								<li>Postnummer</li>
-								<li>Postort</li>
-								<li>Mailadress</li>
-								<li>Telefonnummer</li>
-								<li>Datum för bekräftande av medlemsskap (YYYY-MM-DD)</li>
-							</ul>
+					<form id="profileForm" class="form-horizontal">	
+						<div class="col-xs-6">
+						<label for="exampleInputEmail1" class="sr-only">Ge filen ett beskrivande namn</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Beskrivande namn">
 						</div>
-					</div>
-					<p>Alla dessa uppgifter utom C/O är obligatoriska på samtliga medlemmar för att de skall räknas.</p>
-				</div>
-			</div>
-			<p>Använd gärna vår exempelfil <a href="#">[LÄNK]!</a></p> <p>De format som vi stödjer är för tillfället: [FORMAT]</p>			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Ladda upp din medlemslista</h3>
-				</div>
-				<div class="panel-body">
-					<form class="form-inline">
-						<div class="form-group">
-						<input type="file" id="exampleInputFile">
+						<div class="col-xs-4">
+							<label for="exampleInputFile" class="sr-only">Ladda upp</label>
+							<input class="btn btn-default" type="file" id="exampleInputFile">
 						</div>
-						<button type="submit" class="btn btn-warning col-xs-offset-2">Ladda upp!</button>
+						<div class="col-xs-2">
+							<!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+							<button type="submit" class="btn btn-warning">Ladda upp!</button>
+						</div>						
 					</form>
 				</div>
 				<div class="panel-footer"><strong>Varning!</strong> Det kan ta lång tid för systemet att bearbeta filen ni laddat upp, ha tålamod!</div>
+			</div>
+			<div class="panel panel-success">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					Uppladdade filer
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">
+  						<span class="badge">120 kB</span>
+						<span class="badge">.doc</span>						
+						Årsmötesprotokoll
+ 				 	</li>
+
+				 	<li class="list-group-item">
+						<span class="badge">70 kB</span>
+						<span class="badge">.pdf</span>						
+						Stadgar
+					</li>
+				 	<li class="list-group-item">
+						<span class="badge">55 kB</span>
+						<span class="badge">.pdf</span>
+						Ekonomisk berättelse
+					</li>
+				</ul>
 			</div>			
-		</div>
+        </div>
         <footer class="footer">
 	    	<div class="container">
     	      <div class="row">
         	      <div class="col-md-3 col-md-offset-9">
-                	<a href="foreningsinfo.html" class="btn btn-primary btn-lg btn-block disabled" role="button"><s>Nästa steg</s></a>
+            	    <a href="granska.html" class="btn btn-primary btn-lg btn-block" role="button">Nästa steg</a>
                     <p class="text-muted"></p>
 	              </div>
     	      </div>  

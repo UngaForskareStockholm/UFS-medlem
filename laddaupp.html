@@ -58,50 +58,36 @@
           </div><!-- /.container -->
         </nav>
         <div class="container">
-            <h1>Ladda upp filer!</h1>
+            <h1>Ladda upp</h1>
             <p>Nu är det dags att ladda upp alla filer som vi vill ha in från er i år.</p>
             <p>Här är alla filer som vi vill ha av er:</p>
             <ul>
                 <li>Årsmötesprotokoll</li>
-                <li>lkfj</li>
+                <li>Stadagar om de ändrats under året</li>
+                <li>Ekonomisk berättelse om ni valde att inte skriva det under årsrapport</li>
             </ul>
-            
-            <h2>Ladda upp</h2>
-            	           
-<form id="profileForm" class="form-horizontal">
-  <div class="form-group">
-          <div class="col-xs-6">
-    <label for="exampleInputEmail1">Ge filen ett beskrivande namn</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Beskrivande namn">
-                    </div>
-            <div class="col-xs-6">
-    <label for="exampleInputFile">Ladda upp</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-            </div>
-  </div>
-    <div class="form-group">
-        <div class="col-xs-6">
-            <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
-            <button type="submit" class="btn btn-warning">Spara informationen</button>
-        </div>
-    </div>
-</form>
-
-<div class="panel panel-default">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><strong>Ladda upp en rättad medlemslista</strong></h3>
+					<h3 class="panel-title">Ladda upp en fil</h3>
 				</div>
 				<div class="panel-body">
-					<form class="form-inline">
-						<div class="form-group">
-						<input type="file" id="exampleInputFile">
+					<form id="profileForm" class="form-horizontal">	
+						<div class="col-xs-6">
+						<label for="exampleInputEmail1" class="sr-only">Ge filen ett beskrivande namn</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Beskrivande namn">
 						</div>
-						<button type="submit" class="btn btn-warning">Ladda upp!</button>
+						<div class="col-xs-4">
+							<label for="exampleInputFile" class="sr-only">Ladda upp</label>
+							<input class="btn btn-default" type="file" id="exampleInputFile">
+						</div>
+						<div class="col-xs-2">
+							<!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+							<button type="submit" class="btn btn-warning">Ladda upp!</button>
+						</div>						
 					</form>
 				</div>
 				<div class="panel-footer"><strong>Varning!</strong> Det kan ta lång tid för systemet att bearbeta filen ni laddat upp, ha tålamod!</div>
-			</div>         
+			</div>      
         </div>
         <footer class="footer">
 	    	<div class="container">

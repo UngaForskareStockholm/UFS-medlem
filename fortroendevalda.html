@@ -60,7 +60,7 @@
             <h1>Förtroendevalda</h1>
             <p>Nu är det dags att mata in kontaktinformation till era styrelsemedlemmar samt till minst en revisor. Lägg till fler förtroendevalda genom att trycka på plusknappen brevid den första.</p>
 			<form id="trusteeForm" method="post" class="form-horizontal">
-				<h2>Styrelse och revisorer</h2>
+				<h3>Styrelse och revisorer</h3>
                 <div class="form-group">
                     <label class="control-label sr-only">Styrelsemedlem</label>
                     <div class="col-xs-2">
@@ -70,13 +70,13 @@
                         <input type="text" class="form-control" name="trustee[0].lastName" placeholder="Efternamn" />
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" id="trustee[0].title" placeholder="Förtroendepost" />
+                        <input type="text" class="form-control" name="trustee[0].title" placeholder="Förtroendepost" />
                     </div>  
                     <div class="col-xs-2">
                         <input type="text" class="form-control" name="trustee[0].telNr" placeholder="Telefon" />
                     </div>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" id="trustee[0].emailaddr" placeholder="Mailadress" />
+                        <input type="text" class="form-control" name="trustee[0].emailaddr" placeholder="Mailadress" />
                     </div> 
 	        		<div class="col-xs-1">
     	        		<button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
@@ -92,13 +92,13 @@
                         <input type="text" class="form-control" name="lastName" placeholder="Efternamn" />
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" id="title" placeholder="Förtroendepost" />
+                        <input type="text" class="form-control" name="title" placeholder="Förtroendepost" />
                     </div>  
                     <div class="col-xs-2">
                         <input type="text" class="form-control" name="telNr" placeholder="Telefon" />
                     </div>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" id="emailaddr" placeholder="Mailadress" />
+                        <input type="text" class="form-control" name="emailaddr" placeholder="Mailadress" />
                     </div>
 					<div class="col-xs-1">
 						<button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>

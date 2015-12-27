@@ -59,44 +59,45 @@
         </nav>
         <div class="container">
             <h1>Föreningsinfo</h1>
-            <form id="profileForm" class="form-horizontal">                                       
+			<p>Vill vi ha lite information om den här sidan här, så att det inte ser så konstigt ut?</p>
+            <form id="orginfoForm" method="post" class="form-horizontal">                                       
                 <h3 class="col-xs-offset-2">Kontaktuppgifter</h3>
                 <p class="col-xs-offset-2">Uppdaterade kontaktuppgifter till föreningen gör att ni inte missar någon viktig information eller några inbjudningar, se till att allt stämmer.</p>
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Föreningens namn</label>
                     <div class="col-xs-6">
-                        <input class="form-control" type="text" name="foreningsnamn" placeholder="[FÖRENINGSNAMN]" readonly>
+                        <input class="form-control" type="text" name="orgName" placeholder="[FÖRENINGSNAMN]" readonly>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Kontaktuppgifter</label>
                     <div class="col-xs-3">
-                        <input type="email" class="form-control" name="foreningsmail" placeholder="Föreningens mailadress" />
+                        <input type="text" class="form-control" name="emailaddr" placeholder="Föreningens mailadress" />
                     </div>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" name="foreningstel" placeholder="Föreningens telefonnummer" />
+                        <input type="text" class="form-control" name="telNr" placeholder="Föreningens telefonnummer" />
                     </div>
                 </div>  
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Adress</label>
                     <div class="col-xs-6">
-                        <input type="text" class="form-control" name="foreningsgatuadress" placeholder="Gatuadress" />
+                        <input type="text" class="form-control" name="streetaddr" placeholder="Gatuadress" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-1 control-label sr-only">Eventuell C/o</label>    
                     <div class="col-xs-6 col-xs-offset-1">
-                        <input type="text" class="form-control" name="foreningsevco" placeholder="Eventuell C/o" />
+                        <input type="text" class="form-control" name="co" placeholder="Eventuell C/o" />
                     </div>    
                 </div>   
                 <div class="form-group">
                     <label class="col-xs-1 control-label sr-only">Postnummer och ort</label>
                     <div class="col-xs-2 col-xs-offset-1">
-                        <input type="text" class="form-control" name="foreningspostnr" placeholder="Postnummer" />
+                        <input type="text" class="form-control" name="postalNr" placeholder="Postnummer" />
                     </div>
                     <div class="col-xs-4">
-                        <input type="email" class="form-control" id="foreningspostort" placeholder="Ort" />
+                        <input type="text" class="form-control" name="postTown" placeholder="Ort" />
                     </div>
                 </div>             
                 <h3 class="col-xs-offset-2">Lokal</h3> 
@@ -104,16 +105,16 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Adress</label>
                     <div class="col-xs-6">
-                        <input type="text" class="form-control" name="lokaladress" placeholder="Gatuadress" />
+                        <input type="text" class="form-control" name="locationstreetaddr" placeholder="Gatuadress" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-1 control-label sr-only">Kontakt</label>
                     <div class="col-xs-2 col-xs-offset-1">
-                        <input type="text" class="form-control" name="lokalpostnr" placeholder="Postnummer" />
+                        <input type="text" class="form-control" name="locationpostalnr" placeholder="Postnummer" />
                     </div>
                     <div class="col-xs-4">
-                        <input type="email" class="form-control" id="lokalort" placeholder="Ort" />
+                        <input type="text" class="form-control" name="locationposttown" placeholder="Ort" />
                     </div>
                 </div>
                 <h3 class="col-xs-offset-2">Kontaktperson</h3>
@@ -121,19 +122,19 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Namn</label>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" name="firstName" placeholder="Förnamn" />
+                        <input type="text" class="form-control" name="contactfName" placeholder="Förnamn" />
                     </div>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" name="lastName" placeholder="Efternamn" />
+                        <input type="text" class="form-control" name="contactlName" placeholder="Efternamn" />
                     </div>
 					</div>
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Kontakt</label>
                     <div class="col-xs-3">
-                        <input type="text" class="form-control" name="cellPhone" placeholder="Telefon" />
+                        <input type="text" class="form-control" name="contacttelNr" placeholder="Telefon" />
                     </div>
                     <div class="col-xs-3">
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Mailadress" />
+                        <input type="email" class="form-control" name="contactemailaddr" placeholder="Mailadress" />
                     </div>                    
                 </div>
                 <h3 class="col-xs-offset-2">Mer info</h3> 
@@ -142,41 +143,41 @@
                 <div class="form-group">
                     <label class="col-xs-2 control-label">Sätesort</label>
                     <div class="col-xs-6">
-                        <select class="form-control" name="sldkjhs" placeholder="Välj">
-                          <option selected disabled>Välj kommun</option>
-                          <option>Botkyrka</option>
-                          <option>Danderyd</option>
-                          <option>Ekerö</option>
-                          <option>Haninge</option>
-                          <option>Huddinge</option>
-                          <option>Järfälla</option>
-                          <option>Lidingö</option>
-                          <option>Nacka</option>
-                          <option>Norrtälje</option>
-                          <option>Nykvarn</option>
-                          <option>Nynäshamn</option>
-                          <option>Salem</option>
-                          <option>Sigtuna</option>
-                          <option>Sollentuna</option>
-                          <option>Solna</option>
-                          <option>Stockholm</option>
-                          <option>Sundbyberg</option>
-                          <option>Södertälje</option>
-                          <option>Tyresö</option>
-                          <option>Täby</option>
-                          <option>Upplands-Bro</option>
-                          <option>Upplands Väsby</option>
-                          <option>Vallentuna</option>
-                          <option>Vaxholm</option>
-                          <option>Värmdö</option>
-                          <option>Österåker</option>                          
+                        <select class="form-control" name="hqTown" placeholder="Välj">
+                          <option value="" selected disabled>Välj kommun</option>
+                          <option value="botkyrka">Botkyrka</option>
+                          <option value="danderyd">Danderyd</option>
+                          <option value="ekero">Ekerö</option>
+                          <option value="haninge">Haninge</option>
+                          <option value="huddinge">Huddinge</option>
+                          <option value="jarfalla">Järfälla</option>
+                          <option value="lidingo">Lidingö</option>
+                          <option value="nacka">Nacka</option>
+                          <option value="norrtalje">Norrtälje</option>
+                          <option value="nykvarn">Nykvarn</option>
+                          <option value="nynashamn">Nynäshamn</option>
+                          <option value="salem">Salem</option>
+                          <option value="sigtuna">Sigtuna</option>
+                          <option value="sollentuna">Sollentuna</option>
+                          <option value="solna">Solna</option>
+                          <option value="stockholm">Stockholm</option>
+                          <option value="sundbyberg">Sundbyberg</option>
+                          <option value="sodertalje">Södertälje</option>
+                          <option value="tyreso">Tyresö</option>
+                          <option value="taby">Täby</option>
+                          <option value="upplands-bro">Upplands-Bro</option>
+                          <option value="upplands-vasby">Upplands Väsby</option>
+                          <option value="vallentuna">Vallentuna</option>
+                          <option value="vaxholm">Vaxholm</option>
+                          <option value="varmdo">Värmdö</option>
+                          <option value="osteraker">Österåker</option>                          
                         </select> 
                     </div>
                 </div>
                 <div class="form-group"> 
                     <label class="col-xs-2 control-label">Kontonummer</label>
                     <div class="col-xs-2">
-                        <select class="form-control" name="kontoväljare" id="konto" placeholder="Välj">
+                        <select class="form-control" name="bankType" id="konto" placeholder="Välj"><!-- Kolla på att ändra id i (for bank account form)-->
                           <option selected disabled>Välj kontotyp</option>
                           <option value="plusgiro">PlusGiro</option>
                           <option value="bankgiro">BankGiro</option>
@@ -184,10 +185,10 @@
                         </select>
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" name="bankclear" id="bankclear" placeholder="Clearingnummer" />
+                        <input type="text" class="form-control" name="bankClearNr" id="bankclear" placeholder="Clearingnummer" /><!-- Kolla på att ändra id i (for bank account form)-->
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" name="kontonummer" placeholder="Kontonummer" />
+                        <input type="text" class="form-control" name="bankAccountNr" placeholder="Kontonummer" />
                     </div>
                 </div>
 				<div class="form-group">
@@ -202,7 +203,6 @@
 	    	<div class="container">
     	      <div class="row">
         	      <div class="col-md-3 col-md-offset-9">
-            	    <a href="arsrapport.html" class="btn btn-primary btn-lg btn-block" role="button">Nästa steg</a>
                 	<a href="arsrapport.html" class="btn btn-primary btn-lg btn-block disabled" role="button"><s>Nästa steg</s></a>
                     <p class="text-muted"></p>
 	              </div>
@@ -224,6 +224,8 @@
 		<script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
 		
         <!-- UFS specific JS file (for bank account form) -->
-		<script src="vendor/felicia/arsrapport.js"></script>
+		<script src="vendor/felicia/foreningsinfo.js"></script>
+		<script src="vendor/felicia/foreningsinfo2.js"></script>
+
     </body>
 </html>
