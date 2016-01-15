@@ -47,14 +47,20 @@
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
 		</nav>
+
+		<main class="container">
+			<!-- Actual content is loaded by the load_main() function below -->
+		</main>
+
 		<div class="container">
-				<h1>Hej!</h1>
-				<p>Välkomna till UFS årsrapportering! Här kommer ni kunna göra allt för att er förening ska lämna in en årsrapport. Håll medlemslistan redo, för nu kör vi!</p>
-				<h2>Status för [Föreningsnamn]</h2>
-						<div class="alert alert-info" role="alert"><strong>Ej påbörjad!</strong> Ni har inte påbörjat er rapportering än.</div>
-				<p>När ni påbörjar rapporteringen så kan ni spara och återkomma vid ett senare tillfälle. Så ni behöver inte fylla i alla delar på en gång, om ni inte vill förstås!</p>
-				<p>Undrar ni över vår PUL-policy? <a href="pul.html">Läs den här!</a>
+			<span class="fa fa-circle-o-notch fa-spin fa-5x" id="main-spinner"></span>
 		</div>
+		<div id="load-error" class="container" style="display: none;">
+			<h1>Oj! Något gick fel.</h1>
+			<p>En del av sidan kunde inte laddas. Prova att ladda om sidan. Om det fortsätter trassla är du välkommen att kontakta oss.</p>
+			<p>Felkod: <span id="load-error-code"></span></p>
+		</div>
+
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
@@ -80,5 +86,10 @@
 		<!-- FormValidation plugin and the class supports validating Bootstrap form -->
 		<script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 		<script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+
+		<!-- Actual UFS-medlem JS -->
+		<script src="settings.js"></script>
+		<script src="api.js"></script>
+		<script src="load_main.js"></script>
 	</body>
 </html>
