@@ -1,11 +1,37 @@
-		<!-- FIXME: <link> should go in <head>, not here -->
-		<link href="vendor/bootstrap/css/signin.css" rel="stylesheet">
-			  <form class="form-signin">
-				<h2 class="form-signin-heading">Logga in</h2>
-				<label for="inputUid" class="sr-only">Mailaddress</label>
-				<input type="text" id="inputUid" class="form-control" placeholder="Användarnamn" required autofocus>
-				<label for="inputPassword" class="sr-only">Lösenord</label>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Lösenord" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
-				<p class="help-block">Inloggningsuppgifterna har skickats till er förenings kontaktperson.<br/>Har de inte kommit fram eller om ni har bytt kontaktperson så hör av er till <a href="mailto:felicia@ufs.se" target="_blank">felicia@ufs.se</a> så löser hon det.</p>
-			  </form>
+<!-- FIXME: <link> should go in <head>, not here -->
+<link href="vendor/bootstrap/css/signin.css" rel="stylesheet">
+
+<form class="form-signin">
+	<h2 class="form-signin-heading">Logga in</h2>
+	<label for="inputUid" class="sr-only">Mailaddress</label>
+	<input name="email" type="text" id="inputUid" class="form-control" placeholder="Användarnamn" required autofocus>
+	<label for="inputPassword" class="sr-only">Lösenord</label>
+	<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Lösenord" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
+	<p class="loginSpinner" style="display: none;"><span class="fa fa-circle-o-notch fa-spin fa-5x"></span></p>
+	<p class="loginMessage alert"></p>
+	<p class="help-block">Inloggningsuppgifterna har skickats till er förenings kontaktperson.<br/>Har de inte kommit fram eller om ni har bytt kontaktperson så hör av er till <a href="mailto:felicia@ufs.se" target="_blank">felicia@ufs.se</a> så löser hon det.</p>
+</form>
+
+<script>
+function login_error() {
+	$('.loginMessage').html('Ett fel uppstod under inloggningen. Försök igen eller kontakta oss.');
+}
+function login_wrong() {
+	$('.loginMessage').html('Inloggningsuppgifterna är felaktiga.');
+}
+function login_success() {
+	window.location.replace("#valkommen");
+}
+function login_always() {
+	$('.loginSpinner').hide();
+}
+
+$(function() {
+	$('.form-signin').submit(function(e) {
+		e.preventDefault();
+		$('.loginSpinner').show();
+		login($('.form-signin'), login_error, login_wrong, login_success, login_always);
+	});
+});
+</script>

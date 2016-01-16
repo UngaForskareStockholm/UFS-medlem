@@ -15,3 +15,27 @@ function logged_in() {
 		return true;
 	};
 }
+
+function login(loginform, l_error, l_wrong, l_success, l_always) {
+	api(
+		"/authentication/login",
+		"post",
+		loginform.serializeArray(),
+		function(xhr, status) {
+			if(xhr.status == 0) {
+				l_error();
+			} else {
+				var data = JSON.parse(xhr.responseText || '{}');
+				console.info(data);
+				if(xhr.status == 200) {
+					sessionStorage.setItem("name", data.name);
+					sessionStorage.setItem("user_id", data.user_id);
+					l_success(data);
+				} else {
+					l_wrong(data);
+				}
+			}
+			l_always();
+		}
+	);
+}
