@@ -1,4 +1,5 @@
 function api(api_method, http_method, request_data, callback) {
+	console.info('api called: '+api_method);
 	var jqXHR = $.ajax({
 		url: api_endpoint + api_method,
 		method: http_method.toUpperCase(),
