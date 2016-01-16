@@ -40,3 +40,12 @@ function login(loginform, l_error, l_wrong, l_success, l_always) {
 		}
 	);
 }
+function logout() {
+	api("/authentication/logout", "get", null, function() {
+		sessionStorage.clear();
+		window.location.replace("#login");
+	});
+}
+$(function() {
+	$('.logout-button').click(logout);
+});
