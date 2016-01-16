@@ -9,7 +9,7 @@ function load_main() {
 	// Don't allow :// and other evil stuff
 	allow = new RegExp('^[a-z]*$');
 	if(!allow.test(page)) {
-		console.warn("Requested page does not match allowed regexp: "+page);
+		console.error("Requested page does not match allowed regexp: "+page);
 		$('#main-spinner').hide();
 		$('#load-error-code').html('Sökvägen ej tillåten');
 		$('#load-error').show();
@@ -27,7 +27,9 @@ function load_main() {
 	console.info("load " + filename);
 	$('main').load(filename, function(responseText, textStatus, jqXHR) {
 		$('#main-spinner').hide();
-		if(jqXHR.status != 200) {
+		if(jqXHR.status == 200) {
+			main_loaded(page);
+		} else {
 			$('#load-error-code').html(jqXHR.status);
 			$('#load-error').show();
 		}
@@ -54,9 +56,14 @@ $(function() {
 
 	// If user changes the # part of the URL, reload main
 	$(window).on("hashchange",function(e){
+		$(".navbar-nav li").removeClass("active");
 		$('#main-spinner').show();
 		$('#load-error').hide();
 		$('main').html('');
 		load_main();
 	});
 });
+
+function main_loaded(page) {
+	$(".navbar-hilight-" + page).addClass("active");
+}
