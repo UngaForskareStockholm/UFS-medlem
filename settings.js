@@ -1,2 +1,2 @@
-var api_endpoint = "http://10.11.11.58:8080/";
+var api_endpoint = "/api";
 var start_page = "valkommen";
