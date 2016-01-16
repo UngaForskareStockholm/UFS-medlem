@@ -7,6 +7,21 @@ function api(api_method, http_method, request_data, callback) {
 		complete: callback
 	});
 };
+function api_get(api_method, success, fail, data=null) {
+	api(
+		api_method,
+		"GET",
+		data,
+		function(xhr) {
+			var data = JSON.parse(xhr.responseText || '{}');
+			if(xhr.status == 200) {
+				success(data);
+			} else {
+				fail(data);
+			}
+		}
+	);
+}
 
 function logged_in() {
 	var user_id = sessionStorage.getItem('user_id');
