@@ -7,7 +7,7 @@ function api(api_method, http_method, request_data, callback) {
 		complete: callback
 	});
 };
-function api_get(api_method, success, fail, data=null) {
+function api_get(api_method, success, fail, data) {
 	api(
 		api_method,
 		"GET",
