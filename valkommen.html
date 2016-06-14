@@ -1,0 +1,39 @@
+<h1>Hej!</h1>
+<div class="without_login">
+	<p>Välkomna till UFS årsrapportering! Här kommer ni kunna göra allt för att er förening ska lämna in en årsrapport. Håll medlemslistan redo, för nu kör vi!</p>
+	<p>När ni påbörjar rapporteringen så kan ni spara och återkomma vid ett senare tillfälle. Så ni behöver inte fylla i alla delar på en gång, om ni inte vill förstås!</p>
+	<p>Undrar ni över vår PUL-policy? <a href="pul.html">Läs den här!</a></p>
+</div>
+
+<div class="with_login">
+	<h2>Välj förening</h2>
+
+	<p id="select_organization_spinner"><span class="fa fa-circle-o-notch fa-spin fa-5x"></span></p>
+	<ul class="select_organization">
+	</ul>
+
+	<div class="alert alert-info" role="alert"><strong>Ej påbörjad!</strong> Ni har inte påbörjat er rapportering än.</div>
+
+	<p><a href="#medlemslista" class="btn btn-primary btn-lg btn-block" role="button">Sätt igång!</a></p>
+</div>
+
+<script>
+$(function() {
+	if(logged_in()) {
+		$('.without_login').hide();
+
+		api_get("/organization/list", function(data) {
+			console.info(data);
+			$(data).each(function(index, org) {
+				$('.select_organization').append('<li>' + org.organization_name + '</li>');
+			});
+			$('#select_organization_spinner').hide();
+		}, function(data) {
+			console.warn("FAIL!!!!!1");
+			console.info(data);
+		}, null);
+	} else {
+		$('.with_login').hide();
+	}
+});
+</script>

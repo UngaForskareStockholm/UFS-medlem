@@ -1,92 +1,37 @@
-<!doctype html>
-<html lang="sv-se">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<meta name="description" content="">
-		<meta name="author" content="">
+<!-- FIXME: <link> should go in <head>, not here -->
+<link href="vendor/bootstrap/css/signin.css" rel="stylesheet">
 
-		<title>UFS Medlemsrapportering</title>
+<form class="form-signin">
+	<h2 class="form-signin-heading">Logga in</h2>
+	<label for="inputUid" class="sr-only">Mailaddress</label>
+	<input name="email" type="text" id="inputUid" class="form-control" placeholder="Användarnamn" required autofocus>
+	<label for="inputPassword" class="sr-only">Lösenord</label>
+	<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Lösenord" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
+	<p class="loginSpinner" style="display: none;"><span class="fa fa-circle-o-notch fa-spin fa-5x"></span></p>
+	<p class="loginMessage alert"></p>
+	<p class="help-block">Inloggningsuppgifterna har skickats till er förenings kontaktperson.<br/>Har de inte kommit fram eller om ni har bytt kontaktperson så hör av er till <a href="mailto:felicia@ufs.se" target="_blank">felicia@ufs.se</a> så löser hon det.</p>
+</form>
 
-		<!-- Bootstrap -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!-- FormValidation CSS file -->
-		<link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-		
-		<!-- Font Awesome CSS file -->
-		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+<script>
+function login_error() {
+	$('.loginMessage').html('Ett fel uppstod under inloggningen. Försök igen eller kontakta oss.');
+}
+function login_wrong() {
+	$('.loginMessage').html('Inloggningsuppgifterna är felaktiga.');
+}
+function login_success() {
+	window.location.replace("#valkommen");
+}
+function login_always() {
+	$('.loginSpinner').hide();
+}
 
-		<!-- Custom styles for this template -->
-		<link href="vendor/bootstrap/css/signin.css" rel="stylesheet">
-
-		<!-- UFS specific CSS file -->
-		<link rel="stylesheet" href="vendor/felicia/ufs.css">
-	</head>
-    <body>
-        <div class="ufsheader container-fluid  col-xs-offset-1">
-			<a href="#">
-                <img class="ufsheaderimage" alt="Unga Forskare Stockholm" src="ufslogga.png">
-            </a>
-			<ul class="nav navbar-nav navbar-right">
-              <li><a href="#">UFS.se</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="pul.html">UFS &amp; PUL</a></li>
-            </ul>
-		</div>
-        <nav class="navbar navbar-default">
-          <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li><a href="index.html">Välkommen! <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="medlemslista.html">Medlemslista <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-				<li><a href="foreningsinfo.html">Föreningsinfo <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="arsrapport.html">Årsrapport <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="fortroendevalda.html">Förtroendevalda <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="laddaupp.html">Ladda upp <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="granska.html">Granska / Skicka in <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
-                <li><a href="klart.html">Klart!</a></li>
-              </ul>
-
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container -->
-        </nav>	
-		<div class="container">
-			  <form class="form-signin">
-				<h2 class="form-signin-heading">Logga in</h2>
-				<label for="inputUid" class="sr-only">Mailaddress</label>
-				<input type="text" id="inputUid" class="form-control" placeholder="Användarnamn" required autofocus>
-				<label for="inputPassword" class="sr-only">Lösenord</label>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Lösenord" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
-				<p class="help-block">Inloggningsuppgifterna har skickats till er förenings kontaktperson.<br/>Har de inte kommit fram eller om ni har bytt kontaktperson så hör av er till <a href="mailto:felicia@ufs.se" target="_blank">felicia@ufs.se</a> så löser hon det.</p>
-			  </form>
-		</div> <!-- /container -->  
-		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-		<!-- Bootstrap-->
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-		
-		<!-- jQuery v1.9.1 or higher -->
-		<script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
-
-		<!-- FormValidation plugin and the class supports validating Bootstrap form -->
-		<script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
-		<script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
-    </body>
-</html>
+$(function() {
+	$('.form-signin').submit(function(e) {
+		e.preventDefault();
+		$('.loginSpinner').show();
+		login($('.form-signin'), login_error, login_wrong, login_success, login_always);
+	});
+});
+</script>
