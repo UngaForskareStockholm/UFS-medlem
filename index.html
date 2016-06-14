@@ -3,10 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>UFS Medlemsrapportering</title>
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="vendor/felicia/ufs.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/signin.css">
 	</head>
 	<body>
 		<div class="ufsheader container-fluid  col-xs-offset-1">
@@ -18,6 +19,7 @@
 				<li><a href="#">Facebook</a></li>
 				<li><a href="pul.html">UFS &amp; PUL</a></li>
 			</ul>
+            <h4>Föreningsnamn som arbetas med</h4>
 		</div>
 		<nav class="navbar navbar-default">
 			<div class="container">
@@ -42,7 +44,7 @@
 						<li class="navbar-hilight-laddaupp"><a href="#laddaupp">Ladda upp <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
 						<li class="navbar-hilight-granska"><a href="#granska">Granska / Skicka in <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
 						<li class="navbar-hilight-klart"><a href="#klart">Klart!</a></li>
-						<li><button type="button" class="logout-button">Logga ut</button></li>
+						<li class="navbar-hilight-logout logout-button"><a href="#logout">Logga ut</a></li> <!-- FIXA! Ska gå till rätt ställe och fungera rätt! -->
 					</ul>
 
 				</div><!-- /.navbar-collapse -->
@@ -78,8 +80,9 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- and like EVERYTHING ELSE on the planet -->
-		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-
+ 		<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+ 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 		<!-- Bootstrap-->
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -91,5 +94,14 @@
 		<script src="settings.js"></script>
 		<script src="api.js"></script>
 		<script src="load_main.js"></script>
+        
+        <!-- UFS specific JS file (for bank account form) -->
+		<script src="vendor/felicia/foreningsinfo.js"></script>
+        
+        <!-- UFS specific JS file (for trustee form) -->
+		<script src="vendor/felicia/fortroendevalda.js"></script>
+        
+        <!-- UFS specific JS file (for bank account form) -->
+		<script src="vendor/felicia/arsrapport.js"></script>
 	</body>
 </html>
