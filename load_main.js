@@ -42,8 +42,8 @@ function load_main() {
 // to the login page instead.
 function login_required(page) {
 	switch(page) {
-		case "valkommen":
 		case "login":
+		case "pul":
 			return false;
 		default:
 			return true;
