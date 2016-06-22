@@ -36,7 +36,7 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul id="nav-reporter" class="nav navbar-nav">
 						<li class="navbar-hilight-valkommen"><a href="index.html">Välkommen!<span class="sr-only">(current)</span></a></li>
 						<li class="navbar-hilight-medlemslista"><a href="#medlemslista">Medlemslista</a></li>
 						<li class="navbar-hilight-foreningsinfo"><a href="#foreningsinfo">Föreningsinfo</a></li>
@@ -45,7 +45,23 @@
 						<li class="navbar-hilight-laddaupp"><a href="#laddaupp">Ladda upp</a></li>
 						<li class="navbar-hilight-granska"><a href="#granska">Granska / Skicka in</a></li>
 						<li class="navbar-hilight-klart"><a href="#klart">Klart!</a></li>
-						<li class="navbar-hilight-logout navbar-logout logout-button"><a href="#logout">Logga ut</a></li> 
+						<li class="navbar-hilight-logout navbar-logout logout-button"><a href="#logout">Logga ut</a></li>
+					</ul>
+					<ul id="nav-admin" class="nav navbar-nav">
+						<li class="navbar-hilight-ahej"><a href="#ahej">Välkommen!<span class="sr-only">(current)</span></a></li>
+						<li class="navbar-hilight-agranska"><a href="#agranska">Granska rapporter</a></li>
+						<li class="navbar-hilight-amedlemslista"><a href="#amedlemslista">Lista över medlemmar</a></li>
+						<li class="navbar-hilight-aforeningslista"><a href="#aforeningslista">Lista över föreningar</a></li>
+						<li class="navbar-hilight-alandstinget"><a href="#alandstinget">Uppgifter till landstinget</a></li>
+						<li class="navbar-hilight-aforening"><a href="#aforening">Förening</span></a></li>
+						<li class="navbar-hilight-logout navbar-logout logout-button"><a href="#logout">Logga ut</a></li>
+					</ul>
+					<ul id="nav-auditor" class="nav navbar-nav">
+						<li class="navbar-hilight-ahej"><a href="#ahej">Välkommen!<span class="sr-only">(current)</span></a></li>
+						<li class="navbar-hilight-amedlemslista"><a href="#amedlemslista">Lista över medlemmar</a></li>
+						<li class="navbar-hilight-aforeningslista"><a href="#aforeningslista">Lista över föreningar</a></li>
+						<li class="navbar-hilight-alandstinget"><a href="#alandstinget">Uppgifter till landstinget</a></li>
+						<li class="navbar-hilight-logout navbar-logout logout-button"><a href="#logout">Logga ut</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
@@ -93,6 +109,7 @@
 		<!-- Actual UFS-medlem JS -->
 		<script src="settings.js"></script>
 		<script src="api.js"></script>
+		<script src="load_nav.js"></script>
 		<script src="load_main.js"></script>
         
         <!-- UFS specific JS file (for bank account form) -->
