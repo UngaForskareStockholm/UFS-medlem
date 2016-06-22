@@ -1,0 +1,29 @@
+Ändringar i bootstrap.css
+Har lagt till 
+/* felicia */
+vid alla ändringsställen
+
+Lagt till .navbar-felicia som reglerar höjden på menyn med vår logga i.
+
+.navbar
+ny minheight 74 istf 50
+
+Lägger till i .navbar-brand att logotypen ska centreras höjdledes (position, top)
+
+	Praktiska HTML-koder
+		<!-- En inaktiverad och överstruken knapp -->
+		<a href="laddaupp.html" class="btn btn-primary btn-lg btn-block disabled" role="button"><s>Nästa steg</s></a>
+		<p class="text-muted"></p>
+		
+		
+		<!-- Labels att använda för att indikera saker -->
+		<span class="label label-default">Default</span>
+		<span class="label label-primary">Primary</span>
+		<span class="label label-success">Success</span>
+		<span class="label label-info">Info</span>
+		<span class="label label-warning">Warning</span>
+		<span class="label label-danger">Danger</span>
+		
+		och med ikoner
+		<i class="fa fa-check fa-lg"></i>
+		<span class="label label-warning"><i class="fa fa-exclamation fa-lg"></i></span>
