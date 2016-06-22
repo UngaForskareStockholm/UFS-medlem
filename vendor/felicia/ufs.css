@@ -133,3 +133,8 @@ fieldset[disabled] .navbar-logout .btn-link:hover,
 fieldset[disabled] .navbar-logout .btn-link:focus {
   color: #ccc;
 }
+
+
+.navbar-nav {
+    display: none;
+}
