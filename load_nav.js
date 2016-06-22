@@ -1,9 +1,20 @@
 function load_nav() {
 	
-	var type="a";
+	var type="reporter";
+
+	$('#nav-admin').hide();
+	$('#nav-auditor').hide();
+	$('#nav-reporter').hide();
 	
-	if(type == "a") {
-	} else if(type == "b") {
+	switch(type) {
+		case "admin":
+			$('#nav-admin').show();
+		break;
+		case "auditor":
+			$('#nav-auditor').show();
+		break;
+		case "reporter":
+			$('#nav-reporter').show();
 	}
 }
 
