@@ -36,19 +36,12 @@ body {
   font-size: 24px;
 }
 
-/* testar lite */
-.pull-left { float: left; }
-.pull-right { float: right; }
-.pull-left li, .pull-right li { display: inline-block; }
-ul { overflow: hidden; }
-
-
 
 .navbar-logout {
   background-color: #dae4e3;
   border-color: #c4cdcc;
+  float: right;
 }
-
 .navbar-logout .navbar-brand {
   color: #777;
 }
