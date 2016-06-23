@@ -40,7 +40,6 @@ body {
 .navbar-logout {
   background-color: #dae4e3;
   border-color: #c4cdcc;
-  float: right;
 }
 .navbar-logout .navbar-brand {
   color: #777;
@@ -149,4 +148,9 @@ fieldset[disabled] .navbar-logout .btn-link:focus {
 
 .table > tbody > tr > td {
      vertical-align: middle;
+}
+
+li:nth-last-child(1) {
+    float: none;
+    display: inline-block;
 }
