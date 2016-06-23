@@ -40,6 +40,7 @@ body {
 .navbar-logout {
   background-color: #dae4e3;
   border-color: #c4cdcc;
+  float: right;
 }
 .navbar-logout .navbar-brand {
   color: #777;
