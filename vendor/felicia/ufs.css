@@ -138,3 +138,14 @@ fieldset[disabled] .navbar-logout .btn-link:focus {
 .navbar-nav {
     display: none;
 }
+
+.label-t {
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
