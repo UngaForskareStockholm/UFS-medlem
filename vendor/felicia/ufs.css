@@ -76,7 +76,7 @@ body {
      vertical-align: middle;
 }
 
-    .loginSpinner {
+    .loginSpinner .mainSpinner {
       border: 6px solid #c2c2c2;
       border-radius: 50%;
       border-top: 6px solid #FFFFFF;
