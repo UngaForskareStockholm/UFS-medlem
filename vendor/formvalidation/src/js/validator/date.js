@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/date/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -190,30 +190,29 @@
 
             // Validate day, month, and year
             var valid     = FormValidation.Helper.date(year, month, day),
-                // declare the date, min and max objects
                 min       = null,
                 max       = null,
                 minOption = options.min,
                 maxOption = options.max;
 
             if (minOption) {
-                if (isNaN(Date.parse(minOption))) {
-                    minOption = validator.getDynamicOption($field, minOption);
-                }
+                min = (minOption instanceof Date)
+                    ? minOption
+                    : (this._parseDate(minOption, dateFormat, separator) ||
+                       this._parseDate(validator.getDynamicOption($field, minOption), dateFormat, separator));
 
-                min       = minOption instanceof Date ? minOption : this._parseDate(minOption, dateFormat, separator);
                 // In order to avoid displaying a date string like "Mon Dec 08 2014 19:14:12 GMT+0000 (WET)"
-                minOption = minOption instanceof Date ? this._formatDate(minOption, options.format) : minOption;
+                minOption = this._formatDate(min, options.format);
             }
 
             if (maxOption) {
-                if (isNaN(Date.parse(maxOption))) {
-                    maxOption = validator.getDynamicOption($field, maxOption);
-                }
+                max = (maxOption instanceof Date)
+                    ? maxOption
+                    : (this._parseDate(maxOption, dateFormat, separator) ||
+                       this._parseDate(validator.getDynamicOption($field, maxOption), dateFormat, separator));
 
-                max       = maxOption instanceof Date ? maxOption : this._parseDate(maxOption, dateFormat, separator);
                 // In order to avoid displaying a date string like "Mon Dec 08 2014 19:14:12 GMT+0000 (WET)"
-                maxOption = maxOption instanceof Date ? this._formatDate(maxOption, options.format) : maxOption;
+                maxOption = this._formatDate(max, options.format);
             }
 
             date = new Date(year, month -1, day, hours, minutes, seconds);
@@ -248,7 +247,7 @@
         /**
          * Return a date object after parsing the date string
          *
-         * @param {String} date   The date string to parse
+         * @param {Date|String} date   The date string to parse
          * @param {String} format The date format
          * The format can be:
          *   - date: Consist of DD, MM, YYYY parts which are separated by the separator option
@@ -258,23 +257,37 @@
          * @returns {Date}
          */
         _parseDate: function(date, format, separator) {
-            var minutes     = 0, hours = 0, seconds = 0,
-                sections    = date.split(' '),
-                dateSection = sections[0],
-                timeSection = (sections.length > 1) ? sections[1] : null;
-
-            dateSection = dateSection.split(separator);
-            var year  = dateSection[$.inArray('YYYY', format)],
-                month = dateSection[$.inArray('MM', format)],
-                day   = dateSection[$.inArray('DD', format)];
-            if (timeSection) {
-                timeSection = timeSection.split(':');
-                hours       = timeSection.length > 0 ? timeSection[0] : null;
-                minutes     = timeSection.length > 1 ? timeSection[1] : null;
-                seconds     = timeSection.length > 2 ? timeSection[2] : null;
+            if (date instanceof Date) {
+                return date;
+            }
+            if (typeof date !== 'string') {
+                return null;
             }
 
-            return new Date(year, month -1, day, hours, minutes, seconds);
+            // Ensure that the format must consist of year, month and day patterns
+            var yearIndex   = $.inArray('YYYY', format),
+                monthIndex  = $.inArray('MM', format),
+                dayIndex    = $.inArray('DD', format);
+            if (yearIndex === -1 || monthIndex === -1 || dayIndex === -1) {
+                return null;
+            }
+
+            var minutes     = 0, hours = 0, seconds = 0,
+                sections    = date.split(' '),
+                dateSection = sections[0].split(separator);
+            if (dateSection.length < 3) {
+                return null;
+            }
+
+            if (sections.length > 1) {
+                var timeSection = sections[1].split(':');
+                hours   = timeSection.length > 0 ? timeSection[0] : null;
+                minutes = timeSection.length > 1 ? timeSection[1] : null;
+                seconds = timeSection.length > 2 ? timeSection[2] : null;
+            }
+
+            return new Date(dateSection[yearIndex], dateSection[monthIndex] - 1, dateSection[dayIndex],
+                            hours, minutes, seconds);
         },
 
         /**

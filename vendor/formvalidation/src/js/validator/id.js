@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/id/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -40,6 +40,7 @@
                     SK: 'Slovakia',
                     SM: 'San Marino',
                     TH: 'Thailand',
+                    TR: 'Turkey',
                     ZA: 'South Africa'
                 }
             }
@@ -55,7 +56,7 @@
         // Supported country codes
         COUNTRY_CODES: [
             'BA', 'BG', 'BR', 'CH', 'CL', 'CN', 'CZ', 'DK', 'EE', 'ES', 'FI', 'HR', 'IE', 'IS', 'LT', 'LV', 'ME', 'MK', 'NL',
-            'PL', 'RO', 'RS', 'SE', 'SI', 'SK', 'SM', 'TH', 'ZA'
+            'PL', 'RO', 'RS', 'SE', 'SI', 'SK', 'SM', 'TH', 'TR', 'ZA'
         ],
 
         /**
@@ -1387,6 +1388,26 @@
             }
 
             return (11 - sum % 11) % 10 === parseInt(value.charAt(12), 10);
+        },
+
+        /**
+         * Validate Turkish Identification Number
+         *
+         * @see https://en.wikipedia.org/wiki/Turkish_Identification_Number
+         * @param {String} value The ID
+         * @returns {Boolean}
+         */
+        _tr: function(value) {
+            if (value.length !== 11) {
+                return false;
+            }
+
+            var sum = 0;
+            for (var i = 0; i < 10; i++) {
+                sum += parseInt(value.charAt(i), 10);
+            }
+
+            return (sum % 10) === parseInt(value.charAt(10), 10);
         },
 
         /**

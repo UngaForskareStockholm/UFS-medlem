@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/remote/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -16,7 +16,10 @@
     });
 
     FormValidation.Validator.remote = {
+        priority: 1000,
+
         html5Attributes: {
+            async: 'async',
             crossdomain: 'crossDomain',
             data: 'data',
             datatype: 'dataType',
@@ -46,6 +49,7 @@
          * @param {FormValidation.Base} validator Plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
+         * - async {Boolean} [optional] Indicate the Ajax request will be asynchronous or not. It's true by default
          * - crossDomain {Boolean} [optional]
          * - data {Object|Function} [optional]: By default, it will take the value
          *  {
@@ -94,6 +98,7 @@
             data[options.name || name] = value;
 
             var ajaxOptions = {
+                async: options.async === null || options.async === true || options.async === 'true',
                 data: data,
                 dataType: options.dataType || 'json',
                 headers: options.headers || {},

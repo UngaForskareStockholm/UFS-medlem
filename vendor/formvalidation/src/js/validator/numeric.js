@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/numeric/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -48,10 +48,19 @@
             if (value === '') {
                 return true;
             }
+
             var decimalSeparator   = options.separator || options.decimalSeparator || '.',
                 thousandsSeparator = options.thousandsSeparator || '';
-            decimalSeparator       = (decimalSeparator   === '.') ? '\\.' : decimalSeparator;
-            thousandsSeparator     = (thousandsSeparator === '.') ? '\\.' : thousandsSeparator;
+
+            // Support preceding zero numbers such as .5, -.5
+            if (value.substr(0, 1) === decimalSeparator) {
+                value = '0' + decimalSeparator + value.substr(1);
+            } else if (value.substr(0, 2) === '-' + decimalSeparator) {
+                value = '-0' + decimalSeparator + value.substr(2);
+            }
+
+            decimalSeparator   = (decimalSeparator   === '.') ? '\\.' : decimalSeparator;
+            thousandsSeparator = (thousandsSeparator === '.') ? '\\.' : thousandsSeparator;
 
             var testRegexp         = new RegExp('^-?[0-9]{1,3}(' + thousandsSeparator + '[0-9]{3})*(' + decimalSeparator + '[0-9]+)?$'),
                 thousandsReplacer  = new RegExp(thousandsSeparator, 'g');

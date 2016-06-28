@@ -3,7 +3,7 @@
  * The best jQuery plugin to validate form fields. Support Bootstrap, Foundation, Pure, SemanticUI, UIKit and custom frameworks
  *
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 
@@ -125,11 +125,13 @@ if (typeof jQuery === 'undefined') {
                         formInit:         this.$form.attr('data-' + ns + '-events-form-init'),
                         formPreValidate:  this.$form.attr('data-' + ns + '-events-form-prevalidate'),
                         formError:        this.$form.attr('data-' + ns + '-events-form-error'),
+                        formReset:        this.$form.attr('data-' + ns + '-events-form-reset'),
                         formSuccess:      this.$form.attr('data-' + ns + '-events-form-success'),
                         fieldAdded:       this.$form.attr('data-' + ns + '-events-field-added'),
                         fieldRemoved:     this.$form.attr('data-' + ns + '-events-field-removed'),
                         fieldInit:        this.$form.attr('data-' + ns + '-events-field-init'),
                         fieldError:       this.$form.attr('data-' + ns + '-events-field-error'),
+                        fieldReset:       this.$form.attr('data-' + ns + '-events-field-reset'),
                         fieldSuccess:     this.$form.attr('data-' + ns + '-events-field-success'),
                         fieldStatus:      this.$form.attr('data-' + ns + '-events-field-status'),
                         localeChanged:    this.$form.attr('data-' + ns + '-events-locale-changed'),
@@ -149,6 +151,7 @@ if (typeof jQuery === 'undefined') {
                     message:       this.$form.attr('data-' + ns + '-message'),
                     onPreValidate: this.$form.attr('data-' + ns + '-onprevalidate'),
                     onError:       this.$form.attr('data-' + ns + '-onerror'),
+                    onReset:       this.$form.attr('data-' + ns + '-onreset'),
                     onSuccess:     this.$form.attr('data-' + ns + '-onsuccess'),
                     row: {
                         selector: this.$form.attr('data-' + ns + '-row-selector') || this.$form.attr('data-' + ns + '-group'), // Support backward
@@ -248,6 +251,8 @@ if (typeof jQuery === 'undefined') {
                         // aren't defined by the 'button.selector' option
                         if (that.options.button.selector && !$button.is(that.options.button.selector) && !$button.is(that.$hiddenButton)) {
                             that.$form.off('submit.' + that._namespace).submit();
+                            // Fix the issue where 'formnovalidate' causes IE to send two postbacks to server
+                            return false;
                         }
                     }
                 });
@@ -283,6 +288,11 @@ if (typeof jQuery === 'undefined') {
             if (this.options.onError) {
                 this.$form.on(this.options.events.formError, function(e) {
                     FormValidation.Helper.call(that.options.onError, [e]);
+                });
+            }
+            if (this.options.onReset) {
+                this.$form.on(this.options.events.formReset, function(e) {
+                    FormValidation.Helper.call(that.options.onReset, [e]);
                 });
             }
         },
@@ -335,6 +345,7 @@ if (typeof jQuery === 'undefined') {
                 type      = fields.attr('type'),
                 updateAll = (total === 1) || ('radio' === type) || ('checkbox' === type),
                 trigger   = this._getFieldTrigger(fields.eq(0)),
+                clazz     = this.options.err.clazz.split(' ').join('.'),
                 events    = $.map(trigger, function(item) {
                     return item + '.update.' + ns;
                 }).join(' ');
@@ -355,7 +366,7 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 // Remove all error messages and feedback icons
-                $message.find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]').remove();
+                $message.find('.' + clazz + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]').remove();
                 $parent.find('i[data-' + ns + '-icon-for="' + field + '"]').remove();
 
                 // Whenever the user change the field value, mark it as not validated yet
@@ -434,8 +445,27 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
+            // Sort the validators by priority
+            var sortedByPriority = [];
+            for (validatorName in validators) {
+                alias = validators[validatorName].alias || validatorName;
+
+                // Determine the priority
+                validators[validatorName].priority = parseInt(validators[validatorName].priority
+                                                            || FormValidation.Validator[alias].priority
+                                                            || 1, 10);
+                sortedByPriority.push({
+                    validator: validatorName,
+                    priority: validators[validatorName].priority
+                });
+            }
+            sortedByPriority = sortedByPriority.sort(function(a, b) {
+                return a.priority - b.priority;
+            });
+
             // Prepare the events
             fields
+                .data(ns + '.validators', sortedByPriority)
                 .on(this.options.events.fieldSuccess, function(e, data) {
                     var onSuccess = that.getOptions(data.field, null, 'onSuccess');
                     if (onSuccess) {
@@ -446,6 +476,12 @@ if (typeof jQuery === 'undefined') {
                     var onError = that.getOptions(data.field, null, 'onError');
                     if (onError) {
                         FormValidation.Helper.call(onError, [e, data]);
+                    }
+                })
+                .on(this.options.events.fieldReset, function(e, data) {
+                    var onReset = that.getOptions(data.field, null, 'onReset');
+                    if (onReset) {
+                        FormValidation.Helper.call(onReset, [e, data]);
                     }
                 })
                 .on(this.options.events.fieldStatus, function(e, data) {
@@ -717,7 +753,9 @@ if (typeof jQuery === 'undefined') {
                     validator.html5Attributes = $.extend({}, {
                                                     message: 'message',
                                                     onerror: 'onError',
+                                                    onreset: 'onReset',
                                                     onsuccess: 'onSuccess',
+                                                    priority: 'priority',
                                                     transformer: 'transformer'
                                                 }, validator.html5Attributes);
                     validators[v] = $.extend({}, html5AttrMap === true ? {} : html5AttrMap, validators[v]);
@@ -749,6 +787,7 @@ if (typeof jQuery === 'undefined') {
                     icon:        $field.attr('data-' + ns + '-icon') || $field.attr('data-' + ns + '-feedbackicons') || (this.options.fields && this.options.fields[field] ? this.options.fields[field].feedbackIcons : null), // Support backward
                     message:     $field.attr('data-' + ns + '-message'),
                     onError:     $field.attr('data-' + ns + '-onerror'),
+                    onReset:     $field.attr('data-' + ns + '-onreset'),
                     onStatus:    $field.attr('data-' + ns + '-onstatus'),
                     onSuccess:   $field.attr('data-' + ns + '-onsuccess'),
                     row:         $field.attr('data-' + ns + '-row') || $field.attr('data-' + ns + '-group') || (this.options.fields && this.options.fields[field] ? this.options.fields[field].group : null), // Support backward
@@ -1200,12 +1239,13 @@ if (typeof jQuery === 'undefined') {
                 }
             });
 
-            var total = fields.length;
+            var total = fields.length,
+                clazz = this.options.err.clazz.split(' ').join('.');
             for (var i = 0; i < total; i++) {
                 var $f      = fields[i],
                     field   = $f.attr('data-' + ns + '-field'),
                     $errors = $f.data(ns + '.messages')
-                                .find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]');
+                                .find('.' + clazz + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]');
 
                 if (this.options.fields && this.options.fields[field]
                     && (this.options.fields[field].enabled === 'false' || this.options.fields[field].enabled === false))
@@ -1351,8 +1391,7 @@ if (typeof jQuery === 'undefined') {
          * @returns {FormValidation.Base}
          */
         updateMessage: function(field, validator, message) {
-            var that    = this,
-                ns      = this._namespace,
+            var ns      = this._namespace,
                 $fields = $([]);
             switch (typeof field) {
                 case 'object':
@@ -1366,10 +1405,11 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
+            var clazz = this.options.err.clazz.split(' ').join('.');
             $fields.each(function() {
                 $(this)
                     .data(ns + '.messages')
-                    .find('.' + that.options.err.clazz + '[data-' + ns + '-validator="' + validator + '"][data-' + ns + '-for="' + field + '"]').html(message);
+                    .find('.' + clazz + '[data-' + ns + '-validator="' + validator + '"][data-' + ns + '-for="' + field + '"]').html(message);
             });
 
             return this;
@@ -1411,7 +1451,8 @@ if (typeof jQuery === 'undefined') {
             var that  = this,
                 type  = fields.attr('type'),
                 row   = this.options.fields[field].row || this.options.row.selector,
-                total = ('radio' === type || 'checkbox' === type) ? 1 : fields.length;
+                total = ('radio' === type || 'checkbox' === type) ? 1 : fields.length,
+                clazz = this.options.err.clazz.split(' ').join('.');
 
             for (var i = 0; i < total; i++) {
                 var $field       = fields.eq(i);
@@ -1421,7 +1462,7 @@ if (typeof jQuery === 'undefined') {
 
                 var $parent      = $field.closest(row),
                     $message     = $field.data(ns + '.messages'),
-                    $allErrors   = $message.find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]'),
+                    $allErrors   = $message.find('.' + clazz + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]'),
                     $errors      = validatorName ? $allErrors.filter('[data-' + ns + '-validator="' + validatorName + '"]') : $allErrors,
                     $icon        = $field.data(ns + '.icon'),
                     // Support backward
@@ -1539,7 +1580,8 @@ if (typeof jQuery === 'undefined') {
                     fv: this,
                     field: field,
                     element: $field,
-                    status: status
+                    status: status,
+                    validator: validatorName
                 });
                 this._onFieldValidated($field, validatorName);
             }
@@ -1600,7 +1642,7 @@ if (typeof jQuery === 'undefined') {
 
             var that       = this,
                 type       = fields.attr('type'),
-                total      = ('radio' === type || 'checkbox' === type) ? 1 : fields.length,
+                total      = (('radio' === type || 'checkbox' === type) && this.options.live !== 'disabled') ? 1 : fields.length,
                 updateAll  = ('radio' === type || 'checkbox' === type),
                 validators = this.options.fields[field].validators,
                 verbose    = this.isOptionEnabled(field, 'verbose'),
@@ -1614,8 +1656,12 @@ if (typeof jQuery === 'undefined') {
                     continue;
                 }
 
-                var stop = false;
-                for (validatorName in validators) {
+                var stop             = false,
+                    sortedByPriority = $field.data(ns + '.validators'),
+                    numValidators    = sortedByPriority.length;
+
+                for (var j = 0; j < numValidators; j++) {
+                    validatorName = sortedByPriority[j].validator;
                     if ($field.data(ns + '.dfs.' + validatorName)) {
                         $field.data(ns + '.dfs.' + validatorName).reject();
                     }
@@ -1788,17 +1834,20 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Remove messages and icons
+            var clazz = this.options.err.clazz.split(' ').join('.');
             for (field in this.options.fields) {
                 fields = this.getFieldElements(field);
                 row    = this.options.fields[field].row || this.options.row.selector;
                 for (i = 0; i < fields.length; i++) {
                     $field = fields.eq(i);
+                    // Remove all error messages
+                    var $messages = $field.data(ns + '.messages');
+                    if ($messages) {
+                        $messages.find('.' + clazz + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]').remove();
+                    }
                     $field
-                        // Remove all error messages
-                        .data(ns + '.messages')
-                            .find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]').remove().end()
-                            .end()
                         .removeData(ns + '.messages')
+                        .removeData(ns + '.validators')
                         // Remove feedback classes
                         .closest(row)
                             .removeClass(this.options.row.valid)
@@ -1981,12 +2030,13 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
-            var filter = validator ? '[data-' + ns + '-validator="' + validator + '"]' : '';
+            var filter = validator ? '[data-' + ns + '-validator="' + validator + '"]' : '',
+                clazz  = this.options.err.clazz.split(' ').join('.');
             $fields.each(function() {
                 messages = messages.concat(
                     $(this)
                         .data(ns + '.messages')
-                        .find('.' + that.options.err.clazz + '[data-' + ns + '-for="' + $(this).attr('data-' + ns + '-field') + '"][data-' + ns + '-result="' + that.STATUS_INVALID + '"]' + filter)
+                        .find('.' + clazz + '[data-' + ns + '-for="' + $(this).attr('data-' + ns + '-field') + '"][data-' + ns + '-result="' + that.STATUS_INVALID + '"]' + filter)
                         .map(function() {
                             var v = $(this).attr('data-' + ns + '-validator'),
                                 f = $(this).attr('data-' + ns + '-for');
@@ -2086,9 +2136,10 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
-            var total = $fields.length;
+            var i     = 0,
+                total = $fields.length;
             if (this.options.fields[field]) {
-                for (var i = 0; i < total; i++) {
+                for (i = 0; i < total; i++) {
                     for (var validator in this.options.fields[field].validators) {
                         $fields.eq(i).removeData(ns + '.dfs.' + validator);
                     }
@@ -2102,6 +2153,15 @@ if (typeof jQuery === 'undefined') {
 
             // Mark field as not validated yet
             this.updateStatus(field, this.STATUS_NOT_VALIDATED);
+
+            for (i = 0; i < total; i++) {
+                $fields.eq(i).trigger($.Event(this.options.events.fieldReset), {
+                    fv: this,
+                    field: field,
+                    element: $fields.eq(i),
+                    resetValue: resetValue
+                });
+            }
 
             return this;
         },
@@ -2122,6 +2182,11 @@ if (typeof jQuery === 'undefined') {
 
             // Enable submit buttons
             this.disableSubmitButtons(false);
+
+            this.$form.trigger($.Event(this.options.events.formReset), {
+                fv: this,
+                resetValue: resetValue
+            });
 
             return this;
         },
@@ -2262,11 +2327,13 @@ if (typeof jQuery === 'undefined') {
             formInit: 'init.form.fv',
             formPreValidate: 'prevalidate.form.fv',
             formError: 'err.form.fv',
+            formReset: 'rst.form.fv',
             formSuccess: 'success.form.fv',
             fieldAdded: 'added.field.fv',
             fieldRemoved: 'removed.field.fv',
             fieldInit: 'init.field.fv',
             fieldError: 'err.field.fv',
+            fieldReset: 'rst.field.fv',
             fieldSuccess: 'success.field.fv',
             fieldStatus: 'status.field.fv',
             localeChanged: 'changed.locale.fv',

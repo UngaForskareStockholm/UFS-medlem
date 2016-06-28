@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/mac/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -31,7 +31,7 @@
                 return true;
             }
 
-            return /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/.test(value);
+            return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(value) || /^([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})$/.test(value);
         }
     };
 }(jQuery));

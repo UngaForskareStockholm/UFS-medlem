@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/ein/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -29,8 +29,8 @@
             KANSAS_CITY: ['40', '44'],
             MEMPHIS: ['94', '95'],
             OGDEN: ['80', '90'],
-            PHILADELPHIA: ['33', '39', '41', '42', '43', '46', '48', '62', '63', '64', '66', '68', '71', '72', '73', '74', '75', '76', '77', '81', '82', '83', '84', '85', '86', '87', '88', '91', '92', '93', '98', '99'],
-            INTERNET: ['20', '26', '27', '45', '46'],
+            PHILADELPHIA: ['33', '39', '41', '42', '43', '48', '62', '63', '64', '66', '68', '71', '72', '73', '74', '75', '76', '77', '81', '82', '83', '84', '85', '86', '87', '88', '91', '92', '93', '98', '99'],
+            INTERNET: ['20', '26', '27', '45', '46', '47'],
             SMALL_BUSINESS_ADMINISTRATION: ['31']
         },
 

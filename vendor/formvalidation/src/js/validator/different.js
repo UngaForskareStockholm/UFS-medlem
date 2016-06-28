@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/different/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -32,7 +32,7 @@
         init: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
-                var compareWith = validator.getFieldElements(fields[i]);
+                var compareWith = validator.getFieldElements($.trim(fields[i]));
                 validator.onLiveChange(compareWith, 'live_' + validatorName, function() {
                     var status = validator.getStatus($field, validatorName);
                     if (status !== validator.STATUS_NOT_VALIDATED) {
@@ -53,7 +53,7 @@
         destroy: function(validator, $field, options, validatorName) {
             var fields = options.field.split(',');
             for (var i = 0; i < fields.length; i++) {
-                var compareWith = validator.getFieldElements(fields[i]);
+                var compareWith = validator.getFieldElements($.trim(fields[i]));
                 validator.offLiveChange(compareWith, 'live_' + validatorName);
             }
         },
@@ -78,7 +78,7 @@
                 isValid = true;
 
             for (var i = 0; i < fields.length; i++) {
-                var compareWith = validator.getFieldElements(fields[i]);
+                var compareWith = validator.getFieldElements($.trim(fields[i]));
                 if (compareWith == null || compareWith.length === 0) {
                     continue;
                 }

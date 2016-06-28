@@ -3,7 +3,7 @@
  *
  * @link        http://formvalidation.io/validators/regexp/
  * @author      https://twitter.com/formvalidation
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @copyright   (c) 2013 - 2016 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
  */
 (function($) {
@@ -18,6 +18,7 @@
     FormValidation.Validator.regexp = {
         html5Attributes: {
             message: 'message',
+            flags: 'flags',
             regexp: 'regexp'
         },
 
@@ -39,6 +40,10 @@
          * @param {jQuery} $field Field element
          * @param {Object} options Consists of the following key:
          * - regexp: The regular expression you need to check
+         * - flags: If specified, flags can have any combination of Javascript regular expression flags such as:
+         *      g: global match
+         *      i: ignore case
+         *      m: multiple line
          * @returns {Boolean}
          */
         validate: function(validator, $field, options, validatorName) {
@@ -47,7 +52,9 @@
                 return true;
             }
 
-            var regexp = ('string' === typeof options.regexp) ? new RegExp(options.regexp) : options.regexp;
+            var regexp = ('string' === typeof options.regexp)
+                        ? (options.flags ? new RegExp(options.regexp, options.flags) : new RegExp(options.regexp))
+                        : options.regexp;
             return regexp.test(value);
         }
     };
