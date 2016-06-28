@@ -61,7 +61,7 @@ body {
   background-color: #c4cdcc;
 }
 
-.navbar-nav {
+.nav-reporter .nav-admin .nav-auditor {
     display: none;
 }
 
