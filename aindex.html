@@ -4,23 +4,23 @@
     <head>
       <meta charset="utf-8">
       <title>UFS Medlemsgranskning</title>
-		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-		<link rel="stylesheet" href="vendor/felicia/ufs.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
+        <link rel="stylesheet" href="vendor/felicia/ufs.css">
         <link rel="stylesheet" href="vendor/bootstrap/css/signin.css">
-	</head>
+    </head>
 
     <body>
         <div class="ufsheader container-fluid  col-xs-offset-1">
-			<a href="#">
+            <a href="#">
                 <img class="ufsheaderimage" alt="Unga Forskare Stockholm" src="ufslogga.png">
             </a>
-			<ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
               <li><a href="#">UFS.se</a></li>
               <li><a href="#">Facebook</a></li>
               <li><a href="#pul">UFS &amp; PUL</a></li>
             </ul>
-		</div>
+        </div>
         <nav class="navbar navbar-default">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +39,7 @@
                 <li class="navbar-hilight-ahej"><a href="#ahej">Välkommen!<span class="sr-only">(current)</span></a></li>
                 <li class="navbar-hilight-agranska"><a href="#agranska">Granska rapporter</a></li>
                 <li class="navbar-hilight-amedlemslista"><a href="#amedlemslista">Lista över medlemmar</a></li>
-				<li class="navbar-hilight-aforeningslista"><a href="#aforeningslista">Lista över föreningar</a></li>
+                <li class="navbar-hilight-aforeningslista"><a href="#aforeningslista">Lista över föreningar</a></li>
                 <li class="navbar-hilight-alandstinget"><a href="#alandstinget">Uppgifter till landstinget</a></li>
                 <li class="navbar-hilight-aforening"><a href="#aforening">Förening</span></a></li>
                 <li class="navbar-hilight-logout navbar-logout logout-button"><a href="#logout">Logga ut</a></li> 
@@ -47,42 +47,36 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
         </nav>
-		<main class="container">
-			<!-- Actual content is loaded by the load_main() function below -->
-		</main>
-		<div class="container">
-			<span class="fa fa-circle-o-notch fa-spin fa-5x" id="main-spinner"></span>
-		</div>
-		<div id="load-error" class="container" style="display: none;">
-			<h1>Oj! Något gick fel.</h1>
-			<p>En del av sidan kunde inte laddas. Prova att ladda om sidan. Om det fortsätter trassla är du välkommen att kontakta oss.</p>
-			<p>Felkod: <span id="load-error-code"></span></p>
-		</div>
-		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<!-- and like EVERYTHING ELSE on the planet -->
- 		<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
- 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-		<!-- Bootstrap-->
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <main class="container">
+            <!-- Actual content is loaded by the load_main() function below -->
+        </main>
+        <div class="container">
+            <span class="fa fa-circle-o-notch fa-spin fa-5x" id="main-spinner"></span>
+        </div>
+        <div id="load-error" class="container" style="display: none;">
+            <h1>Oj! Något gick fel.</h1>
+            <p>En del av sidan kunde inte laddas. Prova att ladda om sidan. Om det fortsätter trassla är du välkommen att kontakta oss.</p>
+            <p>Felkod: <span id="load-error-code"></span></p>
+        </div>
+        
+        <!-- jQuery -->
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-		<!-- FormValidation plugin and the class supports validating Bootstrap form -->
-		<script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
-		<script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+        <!-- Bootstrap-->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-		<!-- Actual UFS-medlem JS -->
-		<script src="settings.js"></script>
-		<script src="api.js"></script>
-		<script src="load_main.js"></script>
+        <!-- FormValidation plugin and the class supports validating Bootstrap form -->
+        <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
+        <script src="vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+
+        <!-- Actual UFS-medlem JS -->
+        <script src="settings.js"></script>
+        <script src="api.js"></script>
+        <script src="load_main.js"></script>
         
-        <!-- UFS specific JS file (for bank account form) -->
-		<script src="vendor/ufs/foreningsinfo.js"></script>
-        
-        <!-- UFS specific JS file (for trustee form) -->
-		<script src="vendor/ufs/fortroendevalda.js"></script>
-        
-        <!-- UFS specific JS file (for bank account form) -->
-		<script src="vendor/ufs/arsrapport.js"></script>
+        <!-- UFS specific JS validators -->
+        <script src="vendor/ufs/foreningsinfo.js"></script>
+        <script src="vendor/ufs/fortroendevalda.js"></script>
+        <script src="vendor/ufs/arsrapport.js"></script>
     </body>
 </html>

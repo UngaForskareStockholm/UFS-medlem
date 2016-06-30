@@ -1,54 +1,54 @@
-            <h1>Förtroendevalda</h1>
-            <p>Nu är det dags att mata in kontaktinformation till era styrelsemedlemmar samt till minst en revisor. Lägg till fler förtroendevalda genom att trycka på plusknappen längst till höger.</p>
-			<form id="trusteeForm" method="post" class="form-horizontal">
-				<h3>Styrelse och revisorer</h3>
-                <div class="form-group">
-                    <label class="control-label sr-only">Styrelsemedlem</label>
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="trustee[0].firstName" placeholder="Förnamn" />
-                    </div>
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="trustee[0].lastName" placeholder="Efternamn" />
-                    </div>
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="trustee[0].title" placeholder="Förtroendepost" />
-                    </div>  
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="trustee[0].telNr" placeholder="Telefon" />
-                    </div>
-                    <div class="col-xs-3">
-                        <input type="text" class="form-control" name="trustee[0].emailaddr" placeholder="Mailadress" />
-                    </div> 
-	        		<div class="col-xs-1">
-    	        		<button type="button" class="btn btn-default addButton"><span class="glyphicon glyphicon-plus"></span></button>
-        			</div>
-        		</div>
+<h1>Förtroendevalda</h1>
+<p>Nu är det dags att mata in kontaktinformation till era styrelsemedlemmar samt till minst en revisor. Lägg till fler förtroendevalda genom att trycka på plusknappen längst till höger.</p>
+<form id="trusteeForm" method="post" class="form-horizontal">
+    <h3>Styrelse och revisorer</h3>
+    <div class="form-group">
+        <label class="control-label sr-only">Styrelsemedlem</label>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="trustee[0].firstName" placeholder="Förnamn" />
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="trustee[0].lastName" placeholder="Efternamn" />
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="trustee[0].title" placeholder="Förtroendepost" />
+        </div>  
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="trustee[0].telNr" placeholder="Telefon" />
+        </div>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" name="trustee[0].emailaddr" placeholder="Mailadress" />
+        </div> 
+        <div class="col-xs-1">
+            <button type="button" class="btn btn-default addButton"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </div>
 
-				<!-- The template for adding new field -->
-				<div class="form-group hide" id="trusteeTemplate">
-					<div class="col-xs-2">
-                        <input type="text" class="form-control" name="firstName" placeholder="Förnamn" />
-                    </div>
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="lastName" placeholder="Efternamn" />
-                    </div>
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="title" placeholder="Förtroendepost" />
-                    </div>  
-                    <div class="col-xs-2">
-                        <input type="text" class="form-control" name="telNr" placeholder="Telefon" />
-                    </div>
-                    <div class="col-xs-3">
-                        <input type="text" class="form-control" name="emailaddr" placeholder="Mailadress" />
-                    </div>
-					<div class="col-xs-1">
-						<button type="button" class="btn btn-default removeButton"><span class="glyphicon glyphicon-minus"></span></button>
-					</div>
-				</div>        
-				<div class="form-group">
-					<div class="col-xs-6">
-					<!-- Do NOT use name="submit" or id="submit" for the Submit button -->
-						<button type="submit" class="btn btn-warning">Spara informationen</button>
-					</div>
-				</div>
-        	</form>
+    <!-- The template for adding new field -->
+    <div class="form-group hide" id="trusteeTemplate">
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="firstName" placeholder="Förnamn" />
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="lastName" placeholder="Efternamn" />
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="title" placeholder="Förtroendepost" />
+        </div>  
+        <div class="col-xs-2">
+            <input type="text" class="form-control" name="telNr" placeholder="Telefon" />
+        </div>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" name="emailaddr" placeholder="Mailadress" />
+        </div>
+        <div class="col-xs-1">
+            <button type="button" class="btn btn-default removeButton"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-6">
+        <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+            <button type="submit" class="btn btn-warning">Spara informationen</button>
+        </div>
+    </div>
+</form>

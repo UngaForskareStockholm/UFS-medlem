@@ -1,95 +1,94 @@
-            <h1>Årsrapport</h1>
-            <form id="profileForm" class="form-horizontal">
-                <h2 class="col-xs-offset-2">Vad har ni gjort i år?</h2>
-                <p class="col-xs-offset-2">Vi vill veta vad er förening gjort för något under året som gått, berätta för oss! <br />Skriv kortfattat vad ni haft för verksamhet [AKTUELLT ÅR].</p>
-                <div class="form-group">
-                    <label class="col-xs-2 control-label">Verksamhet</label>
-
-                    <div class="col-xs-6">
-                        <textarea class="form-control" id="textarea" rows="8" name="verksamhet" placeholder="Verksamhet" ></textarea>
-                    </div>
-                </div>
-                <p class="col-xs-offset-2">Gör en liten uppställning med er ekonomi för [ÅRTAL] i stora drag. 		
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
-					  Visa ett exempel
-					</button>
-				</p>
-                <div class="form-group">
-                    <label class="col-xs-2 control-label">Ekonomisk rapport</label>
-                    <div class="col-xs-6">
-                        <textarea class="form-control" id="textarea" rows="8" name="ekorapport" placeholder="Ekonomisk rapport" ></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-6 col-xs-offset-2">
-                        <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
-                        <button type="submit" class="btn btn-warning">Spara informationen</button>
-                    </div>
-                </div>
-            </form>              
-		<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Exempel på ekonomisk berättelse</h4>
-			  </div>
-			  <div class="modal-body">
-				<table class="table table-hover">
-					<tr>
-						<th>Inkomster</th>
-						<th>kr</th>
-					</tr>
-					<tr>
-						<td>Bidrag från UFS</td>
-						<td>5500</td>
-					</tr>
-					<tr>
-						<td>Projektbidrag från UFS</td>
-						<td>3000</td>
-					</tr>
-					<tr>
-						<td>Övriga intäkter</td>
-						<td>500</td>
-					</tr>
-					<tr>
-						<td><strong>Summa inkomster</strong></td>
-						<td><strong>9000</strong></td>
-					</tr>
-					<tr>
-						<th>Utgifter</th>
-						<th>kr</th>
-					</tr>
-					<tr>
-						<td>Projekt elpyssel</td>
-						<td>5000</td>
-					</tr>
-					<tr>
-						<td>Årsmöte</td>
-						<td>1000</td>
-					</tr>
-					<tr>
-						<td>Fika till styrelsemöte</td>
-						<td>250</td>
-					</tr>
-					<tr>
-						<td>Köp av verktyg</td>
-						<td>750</td>
-					</tr>
-					<tr>
-						<td><strong>Summa utgifter</strong></td>
-						<td><strong>7000</strong></td>
-					</tr>
-					<tr>
-						<td>Resultat</td>
-						<td>+2000</td>
-					</tr>					
-				</table>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+<h1>Årsrapport</h1>
+<form id="profileForm" class="form-horizontal">
+    <h2 class="col-xs-offset-2">Vad har ni gjort i år?</h2>
+    <p class="col-xs-offset-2">Vi vill veta vad er förening gjort för något under året som gått, berätta för oss! <br />Skriv kortfattat vad ni haft för verksamhet [AKTUELLT ÅR].</p>
+    <div class="form-group">
+        <label class="col-xs-2 control-label">Verksamhet</label>
+        <div class="col-xs-6">
+            <textarea class="form-control" id="textarea" rows="8" name="verksamhet" placeholder="Verksamhet" ></textarea>
+        </div>
+    </div>
+    <p class="col-xs-offset-2">Gör en liten uppställning med er ekonomi för [ÅRTAL] i stora drag.
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#ekoExempel">
+          Visa ett exempel
+        </button>
+    </p>
+    <div class="form-group">
+        <label class="col-xs-2 control-label">Ekonomisk rapport</label>
+        <div class="col-xs-6">
+            <textarea class="form-control" id="textarea" rows="8" name="ekorapport" placeholder="Ekonomisk rapport" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-6 col-xs-offset-2">
+            <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+            <button type="submit" class="btn btn-warning">Spara informationen</button>
+        </div>
+    </div>
+</form>
+<div class="modal" id="ekoExempel" tabindex="-1" role="dialog" aria-labelledby="ekoLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ekoLabel">Exempel på ekonomisk berättelse</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Inkomster</th>
+                        <th>kr</th>
+                    </tr>
+                    <tr>
+                        <td>Bidrag från UFS</td>
+                        <td>5500</td>
+                    </tr>
+                    <tr>
+                        <td>Projektbidrag från UFS</td>
+                        <td>3000</td>
+                    </tr>
+                    <tr>
+                        <td>Övriga intäkter</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Summa inkomster</strong></td>
+                        <td><strong>9000</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Utgifter</th>
+                        <th>kr</th>
+                    </tr>
+                    <tr>
+                        <td>Projekt elpyssel</td>
+                        <td>5000</td>
+                    </tr>
+                    <tr>
+                        <td>Årsmöte</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>Fika till styrelsemöte</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>Köp av verktyg</td>
+                        <td>750</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Summa utgifter</strong></td>
+                        <td><strong>7000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Resultat</td>
+                        <td>+2000</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -9,18 +9,8 @@ body {
   margin-bottom: 75px;
 }
 .navbar-ufs {
-  min-height: 123px;  
   margin-bottom: 0px;
 }
-.ufsheader {
-	min-height: 123px;
-	margin-right: 45px;
-}
-.ufsheaderimage {
-	margin: 24px;
-	margin-left: 0px;
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -30,9 +20,30 @@ body {
   background-color: #f5f5f5;
   padding: 15px;
 }
-.panel-title {
-  font-size: 24px;
+
+/* Navbar and header styling
+-------------------------------------------------- */
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
 }
+.navbar {
+    border-radius: 0px;
+}
+.ufsheader {
+	min-height: 123px;
+	margin-right: 45px;
+}
+.ufsheaderimage {
+  margin: 24px;
+  margin-left: 0px;
+}
+.nav-reporter .nav-admin .nav-auditor {
+  display: none;
+}
+
+/* Logout button color
+-------------------------------------------------- */
 .navbar-logout {
   background-color: #dae4e3;
   border-color: #c4cdcc;
@@ -62,21 +73,23 @@ body {
   background-color: #c4cdcc;
 }
 
-.nav-reporter .nav-admin .nav-auditor {
-    display: none;
+/* Content styling
+-------------------------------------------------- */
+.panel-title {
+  font-size: 24px;
 }
-
 .label-t {
   font-size: 100%;
   font-weight: bold;
   line-height: 1;
   vertical-align: baseline;
 }
-
 .table > tbody > tr > td {
-     vertical-align: middle;
+  vertical-align: middle;
 }
 
+/* Spinner
+-------------------------------------------------- */
 .loginSpinner .mainSpinner {
   border: 6px solid #c2c2c2;
   border-radius: 50%;
@@ -95,4 +108,3 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-    
