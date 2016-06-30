@@ -60,7 +60,7 @@ $(document).ready(function() {
 				'trustee[0].lastName': lastNameValidators,
 				'trustee[0].title': titleValidators,
 				'trustee[0].telNr': telNrValidators,
-				'trustee[0].emailaddr': emailaddrValidators                
+				'trustee[0].emailaddr': emailaddrValidators
 			}
 		})
 
